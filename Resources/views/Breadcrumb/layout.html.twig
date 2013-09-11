@@ -1,0 +1,29 @@
+{#% extends 'knp_menu_ordered.html.twig' %#}
+
+<ol class="breadcrumb">
+    {% for item in breadcrumb %}
+        <li><a href="{{ item.uri|default('#') }}">{{ item.label|title }}</a></li>
+    {% endfor %}
+</ol>
+
+{#
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+#}
+
+{#% block root %}
+    <ul class="breadcrumb">
+        {% for item in items %}
+            {%- if loop.last == false -%}
+                <li>{%- if item.uri -%}<a
+                    href="{{ item.uri }}">{{ item.label|trans({}, 'menu') }}</a>{%- else -%}{{ item.label|trans({}, 'menu') }}{%- endif -%}
+                    &nbsp;<span class="divider">/</span></li>
+            {% else %}
+                <li class="active">{{ item.label|trans({}, 'menu') }}</li>
+            {%- endif -%}
+        {% endfor %}
+    </ul>
+{% endblock %#}

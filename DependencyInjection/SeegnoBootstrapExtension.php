@@ -26,6 +26,10 @@ class SeegnoBootstrapExtension extends Extension
             $loader->load('forms.yml');
         }
 
+        if ($config['breadcrumbs']) {
+            $loader->load('breadcrumbs.yml');
+        }
+
         if ($config['alerts']) {
             $container->setParameter('seegno_boostrap.alerts', $config['alerts']);
 

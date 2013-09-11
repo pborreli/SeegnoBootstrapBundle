@@ -1,0 +1,9 @@
+parameters:
+    seegno_bootstrap.breadcrumbs.twig_extension.class: Seegno\BootstrapBundle\Twig\Extension\SeegnoBootstrapBreadcrumbsExtension
+
+services:
+    seegno_bootstrap.breadcrumbs.twig_extension:
+        class: %seegno_bootstrap.breadcrumbs.twig_extension.class%
+        arguments: [@knp_menu.factory, @knp_menu.matcher, @knp_menu.voter.router, @knp_menu.helper]
+        tags:
+            - { name: twig.extension }

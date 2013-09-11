@@ -24,6 +24,10 @@ class Configuration implements ConfigurationInterface
                     ->defaultTrue()
                 ->end()
 
+                ->booleanNode('breadcrumbs')
+                    ->defaultTrue()
+                ->end()
+
                 ->arrayNode('alerts')
                     ->prototype('scalar')->end()
                     ->treatFalseLike(array())

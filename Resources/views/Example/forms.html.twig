@@ -6,7 +6,7 @@
     {{ parent() }}
 
     <style>
-        .form-inline > .form-group { margin-right: 10px; }
+        .form-inline .form-group { margin-right: 15px; margin-bottom: 15px; }
     </style>
 {% endblock %}
 
@@ -31,7 +31,7 @@
     <section role="region">
         <h2>Inline form</h2>
         <p>When using <code>.form-inline</code>, you'll need to tweak the style a little to add space between <em>groups</em>, i.e.:</p>
-        <pre>.form-inline > .form-group { margin-right: 10px; }</pre>
+        <pre>.form-inline .form-group { margin-right: 15px; margin-bottom: 15px; }</pre>
 
         <form class="form-inline" role="form">
             {{ form_widget(inlineForm) }}
