@@ -34,6 +34,8 @@
     <li{{ knp_menu.attributes(attributes) }}>
         {%- if item.extra('include') %}
         {% include item.extra('include') %}
+        {%- elseif item.extra('render') %}
+        {% render(controller(item.extra('render'))) %}
         {%- elseif item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
         {{ block('linkElement') }}
         {%- else %}
@@ -63,3 +65,5 @@
 
 <a href="{{ item.uri }}"{{ knp_menu.attributes(linkAttributes) }}>{{ block('label') }}</a>
 {% endblock %}
+
+{% block label %}{% if options.allow_safe_labels and item.getExtra('safe_label', false) %}{{ item.label|trans({}, item.getExtra('translation_domain', 'messages'))|raw }}{% else %}{{ item.label|trans({}, item.getExtra('translation_domain', 'messages')) }}{% endif %}{% endblock %}

@@ -119,6 +119,7 @@ The `MenuProvider` provides some menu item extras:
 The `twig template` included also have some extras:
 
  * **include**: The template location setted as an extra parameter, i.e., `SeegnoBootstrapBundle:Example:menuitem.html.twig`
+ * **render**: The controller setted as an extra parameter, i.e., `SeegnoBootstrapBundle:Example:menuitem`
 
 ### Pagination
 
@@ -146,9 +147,9 @@ The bundle includes some examples. Check the code on `Controller/ExampleControll
 If you want to see them on your browser, add the following route to your routing file:
 
     # app/routing_dev.yml
-    seegno_bootstrap_bundle:
-        resource: "@SeegnoBootstrapBundle/Controller/"
-        type:     annotation
+    seegno_bootstrap_example:
+        resource: "@SeegnoBootstrapBundle/Resources/config/routing/example.yml"
+        prefix: /seegno/bootstrap
 
 And, the `seegno_bootstrap` menu:
 
@@ -165,6 +166,30 @@ And, the `seegno_bootstrap` menu:
 
 ---
 
-## 4. Advanced
+## 4. Style Guide
+
+It's always helfult to have a styleguide. In order to do it, add the following entry to your `routing_dev.yml` file:
+
+    # app/routing_dev.yml
+    seegno_bootstrap_styleguide:
+        resource: "@SeegnoBootstrapBundle/Resources/config/routing/styleguide.yml"
+        prefix: /seegno/bootstrap
+
+Next, you'll need to override the Twig template so you can view the style guide with your stylesheets. Create the file `app/Resources/SeegnoBootstrapBundle/views/StyleGuide/index.html.twig` with the following content:
+
+
+    {% extends 'SeegnoBootstrapBundle:StyleGuide:base.html.twig' %}
+
+    {% block stylesheets %}
+        {% stylesheets filter="cssrewrite,?yui_css"
+            'bundles/acmeproject/less/main.less'
+        %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
+    {% endblock stylesheets %}
+
+And now, you can see how the Bootstrap components will look on your app by accessing `/seegno/bootstrap/styleguide` in dev mode.
+
+## 5. Advanced
 
 To do.
